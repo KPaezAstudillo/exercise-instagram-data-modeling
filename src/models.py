@@ -13,10 +13,10 @@ class User(Base):
     # Here we define columns for the table person
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
-    username = Column(String(250), nullable=False)
+    username = Column(String(250), nullable=False, unique=True)
     firstname = Column(String(250), nullable=False)
     lastname = Column(String(250), nullable=False)
-    email = Column(String(250), nullable=False)
+    email = Column(String(250), nullable=False, unique=True)
 
 class Follower(Base):
     __tablename__ = 'Follower'

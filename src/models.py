@@ -20,8 +20,9 @@ class User(Base):
 
 class Follower(Base):
     __tablename__ = 'Follower'
-    user_from_id = Column(Integer, primary_key=True)
-    user_to_id = Column(Integer)
+    id = Column(Integer, primary_key=True)
+    user_from_id = Column(Integer, ForeignKey('User.id'))
+    user_to_id = Column(Integer, ForeignKey('User.id'))
 
 class Comment(Base):
     __tablename__ = 'Comment'

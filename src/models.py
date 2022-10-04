@@ -23,6 +23,7 @@ class Follower(Base):
     id = Column(Integer, primary_key=True)
     user_from_id = Column(Integer, ForeignKey('User.id'))
     user_to_id = Column(Integer, ForeignKey('User.id'))
+    parent = relationship("User", back_populates="Follower")
     
 
 class Comment(Base):

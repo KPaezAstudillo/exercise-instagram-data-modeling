@@ -28,20 +28,20 @@ class Comment(Base):
     __tablename__ = 'Comment'
     id = Column(Integer, primary_key=True)
     comment_text = Column(String(500), nullable=False)
-    author_id = Column(Integer)
-    post_id = Column(Integer)
+    author_id = Column(Integer, ForeignKey('User.id'))
+    post_id = Column(Integer, ForeignKey('Post.id'))
 
 class Media(Base):
     __tablename__ = 'Media'
     id = Column(Integer, primary_key=True)
     type = Column(String(500), nullable=False)
     url = Column(String(500), nullable=False)
-    post_id  = Column(Integer)
+    post_id  = Column(Integer, ForeignKey('Post.id'))
 
 class Post(Base):
     __tablename__ = 'Post'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer)
+    user_id = Column(Integer, ForeignKey('User.id'))
 
     def to_dict(self):
         return {}

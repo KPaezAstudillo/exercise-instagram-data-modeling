@@ -10,20 +10,20 @@ Base = declarative_base()
 
 class User(Base):
     __tablename__ = 'User'
-    # Here we define columns for the table person
-    # Notice that each column is also a normal Python instance attribute.
+    # Here we define columns for the table user
     id = Column(Integer, primary_key=True)
     username = Column(String(250), nullable=False, unique=True)
     firstname = Column(String(250), nullable=False)
     lastname = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False, unique=True)
+    children = relationship("Follower", back_populates="User")
 
 class Follower(Base):
     __tablename__ = 'Follower'
     id = Column(Integer, primary_key=True)
     user_from_id = Column(Integer, ForeignKey('User.id'))
     user_to_id = Column(Integer, ForeignKey('User.id'))
-    user = relationship('User')
+    
 
 class Comment(Base):
     __tablename__ = 'Comment'

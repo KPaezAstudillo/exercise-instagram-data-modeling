@@ -36,8 +36,8 @@ class Comment(Base):
 class Media(Base):
     __tablename__ = 'Media'
     id = Column(Integer, primary_key=True)
-    type = Column(String(500), nullable=False)
-    url = Column(String(500), nullable=False)
+    type = Column(String(250), nullable=False)
+    url = Column(String(250), nullable=False)
     post_id  = Column(Integer, ForeignKey('Post.id'))
     post = relationship('Post')
 
